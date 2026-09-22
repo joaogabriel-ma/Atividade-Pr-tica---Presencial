@@ -1,0 +1,213 @@
+/* Seletor de elemento: estilo base de texto */
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  color: #222;
+  line-height: 1.5em;
+}
+
+p {
+  font-size: 1rem;
+}
+
+/* Seletor de id: aplicado a um único elemento específico (o cabeçalho) */
+#cabecalho {
+  background-color: #2f3e46;
+  color: #fff;
+  padding: 1em 2em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+#cabecalho h1 {
+  font-size: 1.5rem;
+  margin: 0;
+}
+
+/* Flexbox: organiza os itens do menu em uma única linha, pois é uma
+   lista de itens dispostos em apenas uma dimensão (horizontal). */
+.menu {
+  display: flex;
+  gap: 1.5em;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.menu a {
+  color: #fff;
+  text-decoration: none;
+}
+
+/* Pseudo-classe :hover no menu */
+.menu a:hover {
+  text-decoration: underline;
+  color: #cce3de;
+}
+
+main {
+  max-width: 60rem;
+  margin: 2em auto;
+  padding: 0 1em;
+}
+
+/* Flexbox no cartão do livro: escolhido porque os elementos (imagem +
+   informações) seguem em uma única direção, um ao lado do outro, sem
+   precisar controlar linhas e colunas simultaneamente. */
+.cartao-livro {
+  display: flex;
+  gap: 2em;
+  background-color: #f8f8f8;
+  padding: 1.5em;
+  border-radius: 8px;
+  margin-bottom: 2em;
+  flex-wrap: wrap;
+}
+
+.cartao-livro img {
+  width: 12rem;
+  height: auto;
+  border-radius: 6px;
+}
+
+.info-livro {
+  flex: 1;
+  min-width: 15rem;
+}
+
+.autor {
+  color: #555;
+  font-style: italic;
+}
+
+.preco {
+  font-size: 1.3em;
+  font-weight: bold;
+  color: #2f3e46;
+}
+
+/* Seletor de classe: aplicado a mais de um elemento da página */
+.destaques, .formatos, #contato {
+  margin-bottom: 2em;
+}
+
+#btn-adicionar {
+  background-color: #52796f;
+  color: #fff;
+  border: none;
+  padding: 0.8em 1.5em;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1em;
+}
+
+/* Pseudo-classe :hover no botão */
+#btn-adicionar:hover {
+  background-color: #354f52;
+}
+
+#carrinho {
+  margin-top: 1em;
+  padding-left: 1.2em;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  border: 1px solid #ccc;
+  padding: 0.6em;
+  text-align: left;
+}
+
+/* Grid: usado na grade de formatos porque há linhas e colunas
+   simultâneas (cada formato é um cartão organizado em grade). */
+.formatos-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1em;
+  list-style: none;
+  padding: 0;
+}
+
+.formatos-grid li {
+  background-color: #cce3de;
+  padding: 0.8em;
+  border-radius: 6px;
+  text-align: center;
+}
+
+.exp-cor {
+  padding: 0.8em;
+  border-radius: 6px;
+  max-width: 25rem;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  max-width: 25rem;
+}
+
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3em;
+}
+
+fieldset.campo {
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding: 0.8em;
+}
+
+footer {
+  background-color: #2f3e46;
+  color: #fff;
+  text-align: center;
+  padding: 1em;
+}
+
+/*
+  Experimento de especificidade: o elemento abaixo recebe uma regra por
+  classe (.exp-cor) e uma regra por id (#exp-cor) com cores diferentes.
+  A cor do id vence porque a especificidade de um seletor de id (0,1,0,0)
+  é maior que a de um seletor de classe (0,0,1,0), independente da ordem
+  no arquivo. Se a regra da classe estivesse marcada com !important, ela
+  passaria a vencer, pois !important tem prioridade sobre a especificidade
+  normal, sobrepondo até mesmo o id.
+*/
+.exp-cor {
+  background-color: yellow;
+}
+
+#exp-cor {
+  background-color: lightgreen;
+}
+
+/* Responsividade: unidades relativas já usadas acima em rem/em/%.
+   Media query para telas menores que 600px. */
+@media (max-width: 600px) {
+  #cabecalho {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .menu {
+    flex-direction: column;
+    gap: 0.5em;
+  }
+
+  .cartao-livro {
+    flex-direction: column;
+  }
+
+  .formatos-grid {
+    grid-template-columns: 1fr;
+  }
+}

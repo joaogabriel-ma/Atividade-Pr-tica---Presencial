@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Livraria Página Viva - Cadastro de Livro</title>
+  <link rel="stylesheet" href="css/estilo.css">
+</head>
+<body>
+
+  <header id="cabecalho">
+    <h1>Livraria Página Viva</h1>
+    <p>Carrinho: <span id="contador">0</span></p>
+    <nav>
+      <ul class="menu">
+        <li><a href="#">Início</a></li>
+        <li><a href="#">Catálogo</a></li>
+        <li><a href="#contato">Contato</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <article class="cartao-livro">
+      <img src="imagens/capa-livro.png" alt="Capa do livro Dom Casmurro">
+      <div class="info-livro">
+        <h2>Dom Casmurro</h2>
+        <p class="autor">Machado de Assis</p>
+        <p class="preco">R$ 39,90</p>
+
+        <p>Um dos maiores clássicos da literatura brasileira, Dom Casmurro narra a
+        história de Bentinho e seu ciúme obsessivo por Capitu, sua amiga de infância
+        e depois esposa. Narrado em primeira pessoa, o livro é famoso por deixar
+        no ar a dúvida sobre a traição de Capitu.</p>
+
+        <p>Escrito por Machado de Assis em 1899, é considerado uma das obras mais
+        importantes do Realismo brasileiro e continua sendo leitura obrigatória
+        em escolas de todo o país.</p>
+
+        <button id="btn-adicionar">Adicionar ao carrinho</button>
+        <ul id="carrinho"></ul>
+      </div>
+    </article>
+
+    <section class="destaques">
+      <h3>Destaques</h3>
+      <ul class="formatos-grid">
+        <li>Capa dura</li>
+        <li>Frete grátis</li>
+        <li>Entrega em 24h</li>
+        <li>Edição comentada</li>
+      </ul>
+    </section>
+
+    <!-- Elemento do experimento de especificidade (Etapa 2) -->
+    <p class="exp-cor" id="exp-cor">Experimento de especificidade: esta caixa deve ficar verde clara (regra do id vence a da classe).</p>
+
+    <section class="formatos">
+      <h3>Formatos disponíveis</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Formato</th>
+            <th>Preço</th>
+            <th>Prazo de entrega</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Físico</td>
+            <td>R$ 39,90</td>
+            <td>3 a 5 dias úteis</td>
+          </tr>
+          <tr>
+            <td>E-book</td>
+            <td>R$ 19,90</td>
+            <td>Imediato</td>
+          </tr>
+          <tr>
+            <td>Audiobook</td>
+            <td>R$ 24,90</td>
+            <td>Imediato</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="contato">
+      <h3>Contato</h3>
+      <form>
+        <div class="campo">
+          <label for="nome">Nome</label>
+          <input type="text" id="nome" name="nome">
+        </div>
+
+        <div class="campo">
+          <label for="email">E-mail</label>
+          <input type="email" id="email" name="email">
+        </div>
+
+        <fieldset class="campo">
+          <legend>Preferência de contato</legend>
+          <label for="pref-email">E-mail</label>
+          <input type="radio" id="pref-email" name="preferencia" value="email">
+          <label for="pref-telefone">Telefone</label>
+          <input type="radio" id="pref-telefone" name="preferencia" value="telefone">
+        </fieldset>
+
+        <div class="campo">
+          <label for="senha">Crie uma senha para acompanhar seu pedido</label>
+          <input type="password" id="senha" name="senha">
+        </div>
+
+        <div class="campo">
+          <label for="novidades">Aceito receber novidades por e-mail</label>
+          <input type="checkbox" id="novidades" name="novidades">
+        </div>
+
+        <button type="submit">Enviar</button>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <p>Livraria Página Viva &mdash; contato@paginaviva.com.br</p>
+  </footer>
+
+  <script src="js/script.js"></script>
+
+  <!--
+    Justificativa dos elementos semânticos:
+    header: agrupa a identidade da livraria e a navegação principal, papel
+      diferente de qualquer outro trecho da página, por isso não é uma div genérica.
+    nav: marca explicitamente que aquela lista de links é um bloco de navegação,
+      o que ajuda leitores de tela e motores de busca a entender a função do bloco.
+    main: indica o conteúdo principal e único da página (o cadastro do livro),
+      diferenciando-o de cabeçalho, rodapé e navegação.
+    article: o bloco do livro faz sentido sozinho, com título, imagem, autor,
+      preço e descrição, podendo ser reaproveitado ou distribuído de forma independente.
+    section (contato/destaques/formatos): agrupam conteúdos temáticos distintos
+      dentro do main, cada um com seu próprio título, o que justifica separá-los
+      de uma div sem significado.
+    footer: reúne informações de encerramento da página (nome da livraria e
+      e-mail), papel que uma div comum não comunicaria.
+  -->
+</body>
+</html>
